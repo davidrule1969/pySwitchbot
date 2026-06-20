@@ -41,7 +41,7 @@ MODE_TEMP_RANGE = {
 }
 
 DEFAULT_TEMP_RANGE = (5.0, 35.0)
-HYSTERESIS_IDLE_THRESHOLD = 0.5
+DEADBAND_IDLE_THRESHOLD = 0.5
 
 
 class SwitchbotSmartThermostatRadiator(
@@ -201,7 +201,7 @@ class SwitchbotSmartThermostatRadiator(
         if (
             current_temp is not None
             and target_temp is not None
-            and current_temp >= (target_temp + HYSTERESIS_IDLE_THRESHOLD)
+            and current_temp >= (target_temp + DEADBAND_IDLE_THRESHOLD)
         ):
             return ClimateAction.IDLE
 
